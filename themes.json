@@ -12,5 +12,21 @@
     "fixedOn": "2026-11-07",
     "fixedBy": "KAZRUTx",
     "notes": ""
+  },
+
+  {
+    "id": "new-akame-ga-kill",
+    "name": "New Akame Ga Kill",
+    "author": "ShadowDevilsAvenged",
+    "authorLink": "https://github.com/ShadowDevilsAvenged",
+    "license": "",
+    "description": "Dark theme with an Akame ga Kill wallpaper.",
+    "file": "themes/new-akame-ga-kill/NewAkameGaKill.theme.css",
+    "preview": "themes/new-akame-ga-kill/preview.jpg",
+    "fixed": true,
+    "fixedOn": "2026-11-07",
+    "fixedBy": "KAZRUTx",
+    "notes": ""
   }
+
 ]
