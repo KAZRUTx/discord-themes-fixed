@@ -221,6 +221,26 @@
   }
   .guide-link:hover { border-color: var(--accent); }
 
+  .request {
+    max-width: 1200px;
+    margin: -10px auto 22px;
+    padding: 0 24px;
+    color: var(--muted);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .request-btn {
+    padding: 3px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 12.5px;
+  }
+  .request-btn:hover { border-color: var(--accent); }
 </style>
 </head>
 <body>
@@ -236,6 +256,11 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
     <span><b id="visits-num"></b> visits</span>
   </span>
+</div>
+
+<div class="request">
+  Didn't find the theme you want?
+  <a class="request-btn" href="https://github.com/KAZRUTx/discord-themes-fixed/issues/new?title=Theme%20request%3A%20&body=Theme%20name%3A%20%0A%0ALink%20to%20the%20original%20(BetterDiscord%20store%20or%20GitHub)%3A%20%0A" target="_blank" rel="noopener">Request a theme</a>
 </div>
 
 <main id="grid"></main>
@@ -304,7 +329,8 @@
     const list = themes.filter(t => !q || `${t.name} ${t.author} ${t.description}`.toLowerCase().includes(q));
     count.textContent = `${list.length} theme${list.length === 1 ? "" : "s"}`;
     if (!list.length) {
-      grid.innerHTML = `<p class="empty">No themes match “${esc(search.value)}”.</p>`;
+            const q = encodeURIComponent(search.value.trim());
+      grid.innerHTML = `<p class="empty">No themes match “${esc(search.value)}”. <a href="https://github.com/KAZRUTx/discord-themes-fixed/issues/new?title=Theme%20request%3A%20${q}&body=Theme%20name%3A%20${q}%0A%0ALink%20to%20the%20original%20(BetterDiscord%20store%20or%20GitHub)%3A%20%0A" target="_blank" rel="noopener" style="color:var(--text)">Request it</a></p>`;
       return;
     }
     grid.innerHTML = list.map(t => `
