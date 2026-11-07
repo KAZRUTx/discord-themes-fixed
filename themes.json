@@ -1,0 +1,16 @@
+[
+  {
+    "id": "old-akame-ga-kill",
+    "name": "Old Akame Ga Kill",
+    "author": "ShadowDevilsAvenged",
+    "authorLink": "https://github.com/ShadowDevilsAvenged",
+    "license": "",
+    "description": "Dark red theme with an Akame ga Kill wallpaper.",
+    "file": "themes/old-akame-ga-kill/Old-AkameGaKill-Theme.theme.css",
+    "preview": "themes/old-akame-ga-kill/preview.jpg",
+    "fixed": true,
+    "fixedOn": "2026-11-07",
+    "fixedBy": "KAZRUTx",
+    "notes": ""
+  }
+]

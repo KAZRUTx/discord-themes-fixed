@@ -16,7 +16,7 @@ Discord renames its CSS classes now and then, which breaks most old themes.
 
 | Theme | Original author |
 |-------|-----------------|
-
+| Old Akame ga Kill | ShadowDevilsAvenged |
 
 All credit for the designs goes to the original authors. This repo only updates class names and fixes
 compatibility.
