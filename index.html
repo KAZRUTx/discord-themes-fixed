@@ -208,6 +208,19 @@
   }
   .for-authors .btn svg { width: 15px; height: 15px; }
 
+  .guide-link {
+    display: inline-flex;
+    margin-top: 10px;
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .guide-link:hover { border-color: var(--accent); }
+
 </style>
 </head>
 <body>
@@ -229,7 +242,8 @@
 
 <section class="help">
   <h3>How to install</h3>
-  <p><strong>Vencord:</strong> click <em>Copy Vencord link</em>, then go to Settings → Vencord → Themes → Online Themes and paste it. The theme updates itself.<br>
+  <a class="guide-link" href="guide.html">Step-by-step guide for Vencord & BetterDiscord →</a>
+  <p><strong>Quick Vencord solution:</strong> click <em>Copy Vencord link</em>, then go to Settings → Vencord → Themes → Online Themes and paste it. The theme updates itself.<br>
   <strong>BetterDiscord:</strong> click <em>Download</em> and put the file in <code>%appdata%\BetterDiscord\themes</code>.</p>
 </section>
 

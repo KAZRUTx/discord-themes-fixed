@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to manually install a theme on Vencord · Fixed Discord Themes</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%239b2742%22/%3E%3C/svg%3E">
+<meta name="description" content="Step-by-step guide to installing and enabling a Discord theme in Vencord.">
+<style>
+  :root {
+    --bg: #0d0d10;
+    --card: #16161b;
+    --line: #26262e;
+    --text: #e8e8ec;
+    --muted: #9a9aa6;
+    --accent: #c0334f;
+    --accent-dim: #9b2742;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+  a { color: var(--text); text-underline-offset: 3px; text-decoration-color: var(--line); }
+  a:hover { text-decoration-color: var(--accent); }
+
+  .back {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 32px;
+    color: var(--muted); text-decoration: none; font-size: 14px;
+  }
+  .back:hover { color: var(--text); }
+
+  header { padding: 20px 0 28px; }
+  h1 { margin: 0 0 8px; font-size: 30px; letter-spacing: -0.02em; line-height: 1.2; }
+  h1 span { color: var(--accent); }
+  h1 span.bd { color: #2f6fd6; }
+  .tip-vc { color: var(--accent); }
+  .lead { margin: 0 0 16px; color: var(--muted); }
+  .credit {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .credit svg { width: 14px; height: 14px; color: var(--accent); }
+  .credit b { color: var(--text); font-weight: 600; }
+
+  .tip {
+    display: flex; gap: 14px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent-dim);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 28px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .tip strong { color: var(--text); }
+
+  ol.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+  ol.steps > li {
+    counter-increment: step;
+    position: relative;
+    padding: 0 0 28px 52px;
+  }
+  ol.steps > li::before {
+    content: counter(step);
+    position: absolute; left: 0; top: 0;
+    width: 34px; height: 34px;
+    display: grid; place-items: center;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    color: #fff; font-weight: 700; font-size: 15px;
+  }
+  ol.steps > li::after {
+    content: "";
+    position: absolute; left: 16px; top: 40px; bottom: 6px;
+    width: 2px; background: var(--line);
+  }
+  ol.steps > li:last-child::after { display: none; }
+  ol.steps h2 { margin: 4px 0 6px; font-size: 17px; }
+  ol.steps p { margin: 0 0 8px; color: #cfcfd6; }
+  ol.steps img {
+    display: block;
+    max-width: 100%;
+    max-height: 380px;
+    width: auto;
+    margin-top: 10px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    cursor: zoom-in;
+  }
+
+  /* looks like a Discord / Vencord button */
+  .ui {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 5px;
+    background: #2b2d31;
+    border: 1px solid #3a3c42;
+    color: #f2f3f5;
+    font-size: 13.5px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .ui.allow { background: #8a7a00; border-color: #b3a000; color: #fff; }
+  code {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    word-break: break-all;
+  }
+  .warn {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: rgba(155, 39, 66, .12);
+    border: 1px solid rgba(155, 39, 66, .4);
+    font-size: 14px;
+    color: #e3c4cb;
+  }
+
+  .help-box {
+    margin: 12px 0 40px;
+    padding: 18px 20px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  .help-box h3 { margin: 0 0 4px; font-size: 15px; }
+  .help-box p { margin: 0; color: var(--muted); font-size: 14px; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 24px 0 40px;
+    color: var(--muted);
+    font-size: 14px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  footer strong { color: var(--accent); font-weight: 600; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="./">← Back to all themes</a>
+
+  <header>
+    <h1>How to install a theme on <span>Vencord</span>/<span class="bd">BetterDiscord</span></h1>
+    <!-- <h1>How to install a theme on <span>Vencord</span></h1> -->
+    <p class="lead">Step by step, from downloading the file to seeing the theme in Discord.</p>
+    <span class="credit">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+      Tutorial made by <b>Computrix230</b>
+    </span>
+  </header>
+
+  <div class="tip">
+    <div>
+      <strong>Quick way only for <span class="tip-vc">Vencord</span> :</strong> on the themes page, click <span class="ui">Copy Vencord link</span>, then in Discord go to Settings → Themes → <span class="ui">Online Themes</span> and paste it. The theme also updates itself that way. If you'd rather use the file, follow the steps below.
+    </div>
+  </div>
+
+  <ol class="steps">
+    <li>
+      <h2>Download the theme</h2>
+      <p>On the <a href="./">themes page</a>, click <span class="ui">Download</span> on the theme you want. You get a file ending with <code>.theme.css</code>.</p>
+      <img src="guide/step-1.png" alt="" loading="lazy" onerror="this.remove()">
+    </li>
+
+    <li>
+      <h2>Open your Discord settings</h2>
+      <p>Click the gear icon next to your name in the bottom-left corner of Discord.</p>
+      <img src="guide/step-2.png" alt="" loading="lazy" onerror="this.remove()">
+    </li>
+
+    <li>
+      <h2>Go to the Themes tab</h2>
+      <p>In the left menu, scroll to the <strong>Vencord Settings</strong> section and click <span class="ui">Themes</span>.</p>
+      <img src="guide/step-3.png" alt="" loading="lazy" onerror="this.remove()">
+    </li>
+
+    <li>
+      <h2>Open the themes folder</h2>
+      <p>Under <strong>Local Themes</strong>, click <span class="ui">Open Themes Folder</span>. On Windows this is <code>%appdata%\Vencord\themes</code>.</p>
+      <img src="guide/step-4.png" alt="" loading="lazy" onerror="this.remove()">
+    </li>
+
+    <li>
+      <h2>Put the theme file in that folder</h2>
+      <p>Move or copy the downloaded <code>.theme.css</code> file into the folder that just opened. You can keep as many themes there as you want.</p>
+      <img src="guide/step-5.png" alt="" loading="lazy" onerror="this.remove()">
+    </li>
+
+    <li>
+      <h2>Load the new theme</h2>
+      <p>Go back to Discord and click <span class="ui">Load missing Themes</span>. Switching to any other settings tab and back to Themes works too.</p>
+      <img src="guide/step-6.png" alt="" loading="lazy" onerror="this.remove()">
+    </li>
+
+    <li>
+      <h2>Turn it on</h2>
+      <p>Your themes now appear at the bottom of the Themes tab. Click the switch with the <strong>✕</strong> on the theme you want, and it turns on.</p>
+      <img src="guide/step-7.png" alt="" loading="lazy" onerror="this.remove()">
+    </li>
+
+    <li>
+      <h2>Background image missing? Allow it</h2>
+      <p>Vencord blocks images from sites it doesn't know. If the theme loads but the background stays empty, go back to the Themes tab. At the top there'll be a red <strong>Blocked Resources</strong> box: click <span class="ui allow">Allow</span> next to the link.</p>
+      <img src="guide/step-8.png" alt="" loading="lazy" onerror="this.remove()">
+
+      <!-- Allow box step -->
+      <p style="margin-top:16px">A window pops up: tick <strong>“I fully trust … and understand the risks”</strong>, then click <span class="ui allow">Allow</span>.</p>
+      <img src="guide/step-8b.png" alt="" loading="lazy" onerror="this.remove()">
+    </li>
+
+    <li>
+      <h2>Restart discord</h2>
+      <p>Without a full restart, the image still won't load.</p>
+    </li>
+  </ol>
+
+  <div class="help-box">
+    <h3>Still not working?</h3>
+    <p>Open an <a href="https://github.com/KAZRUTx/discord-themes-fixed/issues/new?title=Theme%20not%20working&body=Theme%20name%3A%0AWhat%27s%20wrong%3A%0A" target="_blank" rel="noopener">issue on GitHub</a>. Write which theme it is and what looks wrong, and attach a screenshot if you can.</p>
+  </div>
+
+  <footer>
+    <div>Tutorial by <strong>Computrix230</strong> · Site by <strong>KAZRUTx</strong></div>
+    <div><a href="./">All themes</a></div>
+  </footer>
+
+</div>
+
+<dialog id="zoom" style="border:none;padding:0;background:transparent;max-width:95vw">
+  <img alt="" style="max-width:95vw;max-height:90vh;display:block;border-radius:8px">
+</dialog>
+
+<style>#zoom::backdrop { background: rgba(0,0,0,.85); }</style>
+
+<script>
+  const zoom = document.getElementById("zoom");
+  document.querySelectorAll("ol.steps img").forEach(img =>
+    img.addEventListener("click", () => {
+      zoom.querySelector("img").src = img.src;
+      zoom.showModal();
+    })
+  );
+  zoom.addEventListener("click", () => zoom.close());
+</script>
+
+</body>
+</html>
