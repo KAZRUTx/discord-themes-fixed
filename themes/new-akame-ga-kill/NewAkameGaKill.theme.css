@@ -5449,3 +5449,12 @@
 .viewFullBioColor_f5f93a {
   color: white;
 }
+.panel_8eCwJY, .activityPanel_pog62O{
+    background:transparent;
+    background-color: transparent;
+}
+#vc-spotify-player {
+    background: transparent;
+    background-color: transparent;
+}
+
