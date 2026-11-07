@@ -36,6 +36,8 @@
     font-weight: 400;
     letter-spacing: 0;
     margin-left: 6px;
+    white-space: nowrap;
+    display: inline-block;
   }
   .lead { margin: 0; color: var(--muted); max-width: 640px; }
   .toolbar {
@@ -58,6 +60,21 @@
   }
   .toolbar input:focus { outline: 2px solid var(--accent-dim); border-color: transparent; }
   .count { color: var(--muted); font-size: 13px; }
+  .visits {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--muted);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .visits.show { display: inline-flex; }
+  .visits svg { width: 14px; height: 14px; color: var(--accent); }
+  .visits b { color: var(--text); font-weight: 600; }
   main {
     max-width: 1200px;
     margin: 0 auto;
@@ -202,6 +219,10 @@
 <div class="toolbar">
   <input id="search" type="search" placeholder="Search themes or authors…" aria-label="Search themes">
   <span class="count" id="count"></span>
+  <span class="visits" id="visits" title="Total visits">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+    <span><b id="visits-num"></b> visits</span>
+  </span>
 </div>
 
 <main id="grid"></main>
@@ -316,6 +337,18 @@
     .then(r => r.json())
     .then(data => { themes = data.sort((a, b) => a.name.localeCompare(b.name)); render(); })
     .catch(() => { grid.innerHTML = `<p class="empty">Couldn't load themes.json.</p>`; });
+
+  fetch("https://kazrutx.goatcounter.com/counter/TOTAL.json")
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById("visits-num").textContent = d.count;
+    document.getElementById("visits").classList.add("show");
+  })
+  .catch(() => {});
+
 </script>
+
+<script data-goatcounter="https://kazrutx.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
 </body>
 </html>

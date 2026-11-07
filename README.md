@@ -25,3 +25,5 @@ compatibility.
 > [!IMPORTANT]
 > **Theme authors:** every design here belongs to its original creator. I only update the code so it works on current Discord.
 > Want your theme removed or credited differently? [Open an issue](https://github.com/KAZRUTx/discord-themes-fixed/issues/new?title=Theme%20removal%20request) or email **kazrutx@protonmail.com**.
+
+This site uses [GoatCounter](https://www.goatcounter.com) to count visits. It uses no cookies and doesn't collect personal data.
