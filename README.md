@@ -18,6 +18,7 @@ Discord renames its CSS classes now and then, which breaks most old themes.
 |-------|-----------------|
 | Old Akame ga Kill | ShadowDevilsAvenged |
 | New Akame ga Kill | ShadowDevilsAvenged |
+| New Rem | ShadowDevilsAvenged |
 
 All credit for the designs goes to the original authors. This repo only updates class names and fixes
 compatibility.

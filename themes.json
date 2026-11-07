@@ -27,6 +27,21 @@
     "fixedOn": "2026-11-07",
     "fixedBy": "KAZRUTx",
     "notes": ""
+  },
+
+  {
+    "id": "new-rem",
+    "name": "New Rem Theme",
+    "author": "ShadowDevilsAvenged",
+    "authorLink": "https://github.com/ShadowDevilsAvenged",
+    "license": "",
+    "description": "",
+    "file": "themes/new-rem/NewRemTheme.theme.css",
+    "preview": "themes/new-rem/preview.jpg",
+    "fixed": true,
+    "fixedOn": "2026-11-07",
+    "fixedBy": "KAZRUTx",
+    "notes": ""
   }
 
 ]
