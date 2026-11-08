@@ -42,6 +42,21 @@
     "fixedOn": "2026-11-07",
     "fixedBy": "KAZRUTx",
     "notes": ""
+  },
+
+  {
+    "id": "horizontal-server-list",
+    "name": "Horizontal Server List",
+    "author": "Gibbu",
+    "authorLink": "https://github.com/DiscordStyles/HorizontalServerList",
+    "description": "Moves the server list from the left to the top of Discord. Compatible with Server Folders and most basic transparent themes",
+    "status": "fixed",
+    "fixedOn": "2026-11-08",
+    "fixedBy": "KAZRUTx",
+    "file": "themes/horizontal-server-list/HorizontalServerList.theme.css",
+    "preview": "themes/horizontal-server-list/preview.jpg",
+    "notes": "",
+    "license": "MIT"
   }
 
 ]
