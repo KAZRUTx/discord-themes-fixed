@@ -57,6 +57,20 @@
     "preview": "themes/horizontal-server-list/preview.jpg",
     "notes": "",
     "license": "MIT"
+  },
+
+  {
+    "id": "clear-vision",
+    "name": "ClearVision",
+    "author": "ClearVision Team",
+    "authorLink": "https://github.com/ClearVision",
+    "description": "Highly customizable theme for BetterDiscord (and Powercord).",
+    "status": "working",
+    "file": "themes/clear-vision/ClearVision-v7-BetterDiscord.theme.css",
+    "link": "https://betterdiscord.app/themes/ClearVision",
+    "preview": "themes/clear-vision/preview.jpg",
+    "license": "Apache-2.0",
+    "notes": ""
   }
 
 ]
