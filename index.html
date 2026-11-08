@@ -102,9 +102,13 @@
   .body { padding: 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
   .title-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
   .title-row h2 { margin: 0; font-size: 18px; }
+
   .status { font-size: 12px; white-space: nowrap; font-weight: 500; }
   .status.ok { color: #6fcf8e; }
   .status.bad { color: #f0626d; }
+  .status.info { color: #6fa8f0; }
+  .status.original { color: #c78bff; }
+
   .card.outdated img { filter: grayscale(.6) brightness(.8); }
   .author { color: var(--muted); font-size: 13px; }
   .author a { color: var(--muted); }
@@ -115,7 +119,8 @@
     border-left: 2px solid var(--accent-dim);
     padding-left: 10px;
   }
-  .actions { display: flex; gap: 8px; margin-top: auto; padding-top: 8px; }
+  .actions { display: flex; gap: 8px; margin-top: auto; padding-top: 8px; flex-wrap: wrap; }
+  
   .btn {
     flex: 1;
     text-align: center;
@@ -128,6 +133,7 @@
     font-size: 14px;
     cursor: pointer;
     text-decoration: none;
+    white-space: nowrap;
   }
   .btn:hover { border-color: var(--accent); }
   .btn.primary { background: var(--accent-dim); border-color: var(--accent-dim); }
@@ -241,12 +247,15 @@
     font-size: 12.5px;
   }
   .request-btn:hover { border-color: var(--accent); }
+
+  .btn.source { flex: 1 1 100%; }
+  .btn.source:hover { color: var(--text); }
 </style>
 </head>
 <body>
 <header>
   <h1>Fixed <span>Discord</span> Themes <small class="by">by KAZRUTx</small></h1>
-  <p class="lead">Old BetterDiscord themes updated for the current Discord UI. They work with Vencord and BetterDiscord.</p>
+  <p class="lead">A collection of Discord themes for Vencord and BetterDiscord. Broken old themes get fixed for the current Discord UI.</p>
 </header>
 
 <div class="toolbar">
@@ -316,11 +325,44 @@
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const absolute = path => new URL(path, location.href).href;
 
-  // "fixed": true  -> green "✓ fixed <fixedOn>"
-  // "fixed": false -> red "✗ not updated yet"
+  //   "status" in themes.json:
+  //   "fixed"    -> green  "✓ fixed <fixedOn>"
+  //   "working"  -> blue   "✓ works as-is"  (uploaded, needed no fix)
+  //   "outdated" -> red    "✗ not updated yet"
+  //   "original" -> purple "★ original"
+  // Entries with "file" get Download + Copy Vencord link, entries with only "link" get a link to the author.
+  function statusOf(t) {
+    if (t.status) return t.status;
+    // old fields still work
+    if (t.original) return "original";
+    if (t.external) return "working";
+    if (t.fixed === true) return "fixed";
+    if (t.fixed === false) return "outdated";
+    return "";
+  }
+
   function status(t) {
-    if (t.fixed === false) return `<span class="status bad">✗ not updated yet</span>`;
-    if (t.fixed === true) return `<span class="status ok">✓ fixed${t.fixedOn ? " " + esc(t.fixedOn) : ""}</span>`;
+    switch (statusOf(t)) {
+      case "fixed":    return `<span class="status ok">✓ fixed${t.fixedOn ? " " + esc(t.fixedOn) : ""}</span>`;
+      case "working":  return `<span class="status info">✓ works as-is</span>`;
+      case "outdated": return `<span class="status bad">✗ not updated yet</span>`;
+      case "original": return `<span class="status original">★ original</span>`;
+      default:         return "";
+    }
+  }
+
+  function actions(t) {
+    const source = t.link
+      ? `<a class="btn source" href="${esc(t.link)}" target="_blank" rel="noopener">Original ↗</a>`
+      : "";
+    if (t.file) {
+      return `<a class="btn primary" href="${esc(t.file)}" download>Download</a>
+              <button class="btn" data-copy="${esc(absolute(t.file))}">Copy Vencord link</button>
+              ${source}`;
+    }
+    if (t.link) {
+      return `<a class="btn primary" href="${esc(t.link)}" target="_blank" rel="noopener">Get it from the author ↗</a>`;
+    }
     return "";
   }
 
@@ -329,27 +371,27 @@
     const list = themes.filter(t => !q || `${t.name} ${t.author} ${t.description}`.toLowerCase().includes(q));
     count.textContent = `${list.length} theme${list.length === 1 ? "" : "s"}`;
     if (!list.length) {
-            const q = encodeURIComponent(search.value.trim());
-      grid.innerHTML = `<p class="empty">No themes match “${esc(search.value)}”. <a href="https://github.com/KAZRUTx/discord-themes-fixed/issues/new?title=Theme%20request%3A%20${q}&body=Theme%20name%3A%20${q}%0A%0ALink%20to%20the%20original%20(BetterDiscord%20store%20or%20GitHub)%3A%20%0A" target="_blank" rel="noopener" style="color:var(--text)">Request it</a></p>`;
+      const name = encodeURIComponent(search.value.trim());
+      grid.innerHTML = `<p class="empty">No themes match “${esc(search.value)}”. <a href="https://github.com/KAZRUTx/discord-themes-fixed/issues/new?title=Theme%20request%3A%20${name}&body=Theme%20name%3A%20${name}%0A%0ALink%20to%20the%20original%20(BetterDiscord%20store%20or%20GitHub)%3A%20%0A" target="_blank" rel="noopener" style="color:var(--text)">Request it</a></p>`;
       return;
     }
-    grid.innerHTML = list.map(t => `
-      <article class="card${t.fixed === false ? " outdated" : ""}">
+    grid.innerHTML = list.map(t => {
+      const s = statusOf(t);
+      return `
+      <article class="card${s === "outdated" ? " outdated" : ""}">
         <img src="${esc(t.preview)}" alt="${esc(t.name)} preview" loading="lazy" data-zoom>
         <div class="body">
           <div class="title-row">
             <h2>${esc(t.name)}</h2>
             ${status(t)}
           </div>
-          <div class="author">by ${t.authorLink ? `<a href="${esc(t.authorLink)}" target="_blank" rel="noopener">${esc(t.author)}</a>` : esc(t.author)}${t.fixedBy && t.fixed !== false ? ` · fixed by ${esc(t.fixedBy)}` : ""}${t.license ? ` · ${esc(t.license)} license` : ""}</div>
+          <div class="author">by ${t.authorLink ? `<a href="${esc(t.authorLink)}" target="_blank" rel="noopener">${esc(t.author)}</a>` : esc(t.author)}${t.fixedBy && s === "fixed" ? ` · fixed by ${esc(t.fixedBy)}` : ""}${t.license ? ` · ${esc(t.license)} license` : ""}</div>
           <p class="desc">${esc(t.description)}</p>
           ${t.notes ? `<div class="note">${esc(t.notes)}</div>` : ""}
-          <div class="actions">
-            <a class="btn primary" href="${esc(t.file)}" download>Download</a>
-            <button class="btn" data-copy="${esc(absolute(t.file))}">Copy Vencord link</button>
-          </div>
+          <div class="actions">${actions(t)}</div>
         </div>
-      </article>`).join("");
+      </article>`;
+    }).join("");
   }
 
   grid.addEventListener("click", async e => {
