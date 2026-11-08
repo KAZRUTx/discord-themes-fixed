@@ -71,6 +71,21 @@
     "preview": "themes/clear-vision/preview.jpg",
     "license": "Apache-2.0",
     "notes": ""
+  },
+
+  {
+    "id": "new-bnha",
+    "name": "New BNHA theme",
+    "author": "ShadowDevilsAvenged",
+    "authorLink": "https://github.com/ShadowDevilsAvenged",
+    "license": "",
+    "description": "",
+    "file": "themes/new-bnha/NewBNHA.theme.css",
+    "preview": "themes/new-bnha/preview.jpg",
+    "status": "fixed",
+    "fixedOn": "2026-11-08",
+    "fixedBy": "Computrix230",
+    "notes": ""
   }
 
 ]
