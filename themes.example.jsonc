@@ -1,0 +1,122 @@
+// =====================================================================
+//  themes.example.jsonc
+//  Reference for themes.json. Every field and every status
+// =====================================================================
+
+//  Status: "working", "fixed", "outdated", "original".
+//  file/link: File: download + vencord link. Link: only link to original source
+//  notes: optional. Extra info in a small box on the card (tips, warnings).
+[
+
+  // ---------------------------------------------------------------
+  //  1) WORKING - uploaded theme that works as-is, no fix needed
+  //     Badge: blue "✓ works as-is"
+  // ---------------------------------------------------------------
+  {
+    "id": "some-theme",
+    "name": "Some Theme",
+    "author": "SomeAuthor",
+    "authorLink": "https://github.com/SomeAuthor", //Link on the author's name (their GitHub, repo or BetterDiscord page).
+    "description": "Dark theme with a city wallpaper.",
+    "status": "working",
+    "file": "themes/some-theme/SomeTheme.theme.css",
+    "preview": "themes/some-theme/preview.jpg",
+    "license": "",
+    "notes": "The background image loads from imgur, no Allow needed in Vencord."
+  },
+
+  // ---------------------------------------------------------------
+  //  2) FIXED - old broken theme that is updated for current Discord
+  //     Badge: green "✓ fixed <fixedOn>"
+  // ---------------------------------------------------------------
+  {
+    "id": "old-akame-ga-kill",
+    "name": "Old Akame Ga Kill",
+    "author": "ShadowDevilsAvenged",
+    "authorLink": "https://github.com/ShadowDevilsAvenged/ShadowDevilsAvenged",
+    "description": "Dark red theme with an Akame ga Kill wallpaper.",
+    "status": "fixed",
+    "fixedOn": "2026-11-07",
+    "fixedBy": "KAZRUTx",
+    "file": "themes/old-akame-ga-kill/Old-AkameGaKill-Theme.theme.css",
+    "preview": "themes/old-akame-ga-kill/preview.jpg",
+    "notes": "The wallpaper is hosted on alphacoders.com. In Vencord, click Allow under Settings > Vencord > Themes > Allow, then fully restart Discord."
+  },
+
+  // ---------------------------------------------------------------
+  //  3) OUTDATED - in the collection, but still broken
+  //     Badge: red "✗ not updated yet", preview is shown greyed out.
+  // ---------------------------------------------------------------
+  {
+    "id": "broken-theme",
+    "name": "Broken Theme",
+    "author": "OtherAuthor",
+    "authorLink": "https://github.com/OtherAuthor",
+    "description": "Neon purple theme. Still uses the old Discord class names.",
+    "status": "outdated",
+    "link": "https://github.com/OtherAuthor/themes",
+    "preview": "themes/broken-theme/preview.jpg"
+  },
+
+  // ---------------------------------------------------------------
+  //  4) ORIGINAL - my own theme
+  //     Badge: purple "★ original"
+  // ---------------------------------------------------------------
+  {
+    "id": "stardrift",
+    "name": "Stardrift",
+    "author": "KAZRUTx",
+    "authorLink": "https://github.com/KAZRUTx",
+    "description": "Dark space theme with a green-to-purple gradient.",
+    "status": "original",
+    "file": "themes/stardrift/Stardrift.theme.css",
+    "preview": "themes/stardrift/preview.jpg",
+    "license": ""
+  },
+
+  // ---------------------------------------------------------------
+  //  5) WORKING, LINK ONLY - works fine, but you not host the file
+  //     Badge: blue "✓ works as-is", button: "Get it from the author ↗"
+  // ---------------------------------------------------------------
+  {
+    "id": "space",
+    "name": "Space",
+    "author": "Spectra",
+    "authorLink": "",
+    "description": "Green and purple Neutron-based theme with a space wallpaper.",
+    "status": "working",
+    "link": "",
+    "preview": "themes/space/preview.jpg"
+  }
+
+  // ^ no comma after the last entry
+
+]
+
+// =====================================================================
+//  QUICK REFERENCE
+//
+//  field        required   used for
+//  -----------  ---------  -----------------------------------------------
+//  id           yes        unique ID, same as the folder name
+//  name         yes        card title
+//  author       yes        original author
+//  authorLink   no         link on the author's name
+//  description  yes        card text, searchable
+//  status       yes        "working" | "fixed" | "outdated" | "original"
+//  file         *          theme file in the repo -> Download + Copy Vencord link
+//  link         *          original theme online -> "Get it from the author ↗"
+//  preview      yes        screenshot on the card
+//  license      no         e.g. "MIT", shown on the card
+//  notes        no         small info box on the card
+//  fixedOn      no         date in the green badge (only for "fixed")
+//  fixedBy      no         "fixed by ..." on the card (only for "fixed")
+//
+//  * every entry needs "file" or "link", otherwise the card has no button.
+//
+//  Old fields still work but aren't needed anymore:
+//    "fixed": true  = "status": "fixed"
+//    "fixed": false = "status": "outdated"
+//    "external": true = "status": "working" (with "link")
+//    "original": true = "status": "original"
+// =====================================================================
