@@ -30,6 +30,7 @@ A collection of Discord themes for Vencord and BetterDiscord. Discord renames it
 | Calm and Peaceful Street | ShadowDevilsAvenged |
 | GGO Kirito | VaporousCreeper |
 | Roxy Theme V2 | gyozagames |
+| New Kemono Friends Theme | ShadowDevilsAvenged |
 
 ## License
 

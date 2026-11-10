@@ -201,6 +201,21 @@
     "preview": "themes/roxy-theme-v2/preview.jpg",
     "notes": "",
     "license": ""
+  },
+
+  {
+    "id": "new-kemono-friends",
+    "name": "New Kemono Friends Theme",
+    "author": "ShadowDevilsAvenged",
+    "authorLink": "https://github.com/ShadowDevilsAvenged",
+    "description": "",
+    "status": "fixed",
+    "fixedOn": "2026-11-10",
+    "fixedBy": "Patrikk829",
+    "file": "themes/new-kemono-friends/NewKemonoFriends.theme.css",
+    "preview": "themes/new-kemono-friends/preview.jpg",
+    "notes": "",
+    "license": ""
   }
 
 ]
