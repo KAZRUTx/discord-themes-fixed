@@ -35,6 +35,7 @@ A collection of Discord themes for Vencord and BetterDiscord. Discord renames it
 | 02 from Darling in the Franxx | ShadowDevilsAvenged |
 | Team Rem | ShadowDevilsAvenged |
 | Tokisaki Kurumi | ShadowDevilsAvenged |
+| Serana | ShadowDevilsAvenged |
 
 ## License
 
