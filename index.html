@@ -276,16 +276,49 @@
   .stuck { margin-top: 12px; }
   .stuck a { color: var(--text); }
   .stuck a:hover { color: var(--accent); }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .hero-actions .discord-btn {
+    margin-top: 0;
+    border: 1px solid transparent;
+  }
+  .hero-guide {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .hero-guide:hover { border-color: var(--accent); }
+  .hero-guide svg { width: 18px; height: 18px; }
 </style>
 </head>
 <body>
+  
 <header>
   <h1>Fixed <span>Discord</span> Themes <small class="by">by KAZRUTx</small></h1>
   <p class="lead">A collection of Discord themes for Vencord and BetterDiscord. Broken old themes get fixed for the current Discord UI.</p>
-  <a class="discord-btn" href="https://discord.gg/nHPjQ8TTX3" target="_blank" rel="noopener">
-  <img src="https://cdn.simpleicons.org/discord/white" alt="" aria-hidden="true" width="20" height="20">
-  Join the support server
-</a>
+  <div class="hero-actions">
+    <a class="discord-btn" href="https://discord.gg/nHPjQ8TTX3" target="_blank" rel="noopener">
+      <img src="https://cdn.simpleicons.org/discord/white" alt="" aria-hidden="true" width="20" height="20">
+      Join the support server
+    </a>
+    <a class="hero-guide" href="guide.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>
+      How to install
+    </a>
+  </div>
 </header>
 
 <div class="toolbar">
