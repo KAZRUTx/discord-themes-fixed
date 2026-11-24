@@ -6,7 +6,7 @@
  */
 
 /*
-* Fixed for the 2026 Discord UI by KAZRUTx
+* Fixed for the 2026 Discord UI by KAZRUTx & Computrix230
 * Original theme by ShadowDevilsAvenged: https://github.com/ShadowDevilsAvenged
 * More fixed themes: https://KAZRUTx.github.io/discord-themes-fixed/  or  https://github.com/KAZRUTx/discord-themes-fixed
 * Unofficial update. Report problems with this fix to me, not the original author.
@@ -5787,6 +5787,8 @@
 .viewFullBioColor_f5f93a {
   color: white;
 }
+
+/* FDT Fix - transparent call window */
 .callContainer_hbKzX7{
   background:transparent;
   background-color:transparent;
