@@ -435,6 +435,21 @@
   "preview": "https://fdt-themes.github.io/DiscoCities/preview.jpg",
   "license": "MIT",
   "notes": "Maintained by FDT (github.com/fdt-themes/DiscoCities)."
+  },
+
+  {
+  "id": "fallout-4-terminal",
+  "name": "Fallout 4 Terminal",
+  "author": "Bates",
+  "authorLink": "https://github.com/B4T3S",
+  "description": "Green ROBCO Industries (tm) terminal look from Fallout 4, with a CRT scanline effect and customizable colors.",
+  "status": "fixed",
+  "fixedOn": "2026-11-26",
+  "fixedBy": "KAZRUTx, Computrix230",
+  "file": "https://fdt-themes.github.io/Fallout4TerminalTheme/Fallout4Terminal.theme.css",
+  "preview": "https://fdt-themes.github.io/Fallout4TerminalTheme/img/FalloutTerminal.png",
+  "license": "ISC",
+  "notes": "Maintained by FDT (github.com/fdt-themes/Fallout4TerminalTheme) with Bates' permission."
   }
 
 ]
