@@ -450,6 +450,21 @@
   "preview": "https://fdt-themes.github.io/Fallout4TerminalTheme/img/FalloutTerminal.png",
   "license": "ISC",
   "notes": "Maintained by FDT (github.com/fdt-themes/Fallout4TerminalTheme) with Bates' permission."
+  },
+
+  {
+    "id": "wildberry",
+    "name": "Wildberry",
+    "author": "daggy1234",
+    "authorLink": "https://github.com/daggy1234",
+    "description": "",
+    "status": "fixed",
+    "fixedOn": "2026-11-26",
+    "fixedBy": "KAZRUTx",
+    "file": "themes/wildberry/Wildberry.theme.css",
+    "preview": "themes/wildberry/preview.jpg",
+    "notes": "",
+    "license": "MIT"
   }
 
 ]
