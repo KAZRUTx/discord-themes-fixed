@@ -465,6 +465,20 @@
     "preview": "themes/wildberry/preview.jpg",
     "notes": "",
     "license": "MIT"
-  }
+  },
 
+  {
+    "id": "youtube-nation",
+    "name": "Youtube Nation",
+    "author": "ShadowDevilsAvenged",
+    "authorLink": "https://github.com/ShadowDevilsAvenged",
+    "description": "The Storage of All Videos.",
+    "status": "fixed",
+    "fixedOn": "2026-11-27",
+    "fixedBy": "KAZRUTx",
+    "file": "themes/youtube-nation/YoutubeNation.theme.css",
+    "preview": "themes/youtube-nation/preview.jpg",
+    "notes": "",
+    "license": ""
+  }
 ]

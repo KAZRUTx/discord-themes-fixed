@@ -1,0 +1,420 @@
+/**
+ * @name Youtube Nation
+ * @author ShadowDevilsAvenged
+ * @description The Storage of All Videos
+ * @version 4.5
+ */
+
+/*
+ * Fixed for the 2026 Discord UI by KAZRUTx
+ * Part of the Fixed Discord Themes (FDT) project
+ *   More themes: https://KAZRUTx.github.io/discord-themes-fixed/
+ *   Source:      https://github.com/KAZRUTx/discord-themes-fixed
+ *
+ * Original theme by ShadowDevilsAvenged
+ * Unofficial update. Report problems with this fix to our repo, not the original author.
+ */
+
+:root {
+    --yt-bg: #282828;
+    --yt-bg-dark: #212121;
+    --yt-bg-darker: #1c1c1c;
+    --yt-tooltip: #616161;
+    --yt-text: #F1F1F1;
+    --yt-text-muted: #aaa;
+    --yt-red: #FF0000;
+    --yt-blue: #3ea6ff;
+    --yt-hover: rgba(255, 255, 255, .1);
+    --yt-active: rgba(255, 255, 255, .2);
+    --yt-border: rgba(255, 255, 255, .1);
+    --yt-border-hover: rgba(255, 255, 255, .2);
+}
+
+/* =========================================================
+   1. Variables
+   ========================================================= */
+.theme-dark.theme-dark,
+.theme-midnight.theme-midnight,
+.theme-darker.theme-darker {
+    --app-frame-background: var(--yt-bg);
+    --background-base-lowest: var(--yt-bg);
+    --background-base-lower: var(--yt-bg);
+    --background-base-low: var(--yt-bg);
+    --background-surface-high: var(--yt-bg);
+    --background-surface-higher: var(--yt-bg);
+    --background-surface-highest: var(--yt-bg-dark);
+    --bg-surface-raised: var(--yt-bg);
+    --bg-base-primary: var(--yt-bg);
+    --bg-base-secondary: var(--yt-bg);
+    --bg-base-tertiary: var(--yt-bg);
+    --background-primary: var(--yt-bg);
+    --background-secondary: var(--yt-bg);
+    --background-secondary-alt: var(--yt-bg);
+    --background-tertiary: var(--yt-bg);
+    --background-floating: var(--yt-bg);
+    --chat-background: var(--yt-bg);
+    --chat-background-default: var(--yt-bg);
+    --channel-background-default: var(--yt-bg);
+    --home-background: var(--yt-bg);
+    --panel-bg: var(--yt-bg);
+    --modal-background: var(--yt-bg);
+    --modal-footer-background: transparent;
+    --card-background-default: var(--yt-hover);
+    --embed-background: var(--yt-bg);
+    --input-background-default: var(--yt-hover);
+    --channeltextarea-background: var(--yt-bg);
+
+    /* hover / selected */
+    --background-modifier-hover: var(--yt-hover);
+    --background-modifier-active: var(--yt-active);
+    --background-modifier-selected: var(--yt-active);
+    --background-mod-subtle: var(--yt-hover);
+    --background-mod-normal: var(--yt-hover);
+    --background-mod-strong: var(--yt-active);
+    --interactive-background-hover: var(--yt-hover);
+    --interactive-background-active: var(--yt-active);
+    --interactive-background-selected: var(--yt-active);
+    --background-message-hover: rgba(0, 0, 0, .2);
+    --message-mentioned-background-default: var(--yt-hover);
+    --message-mentioned-background-hover: var(--yt-active);
+
+    /* text */
+    --text-default: var(--yt-text);
+    --text-normal: var(--yt-text);
+    --text-strong: #fff;
+    --header-primary: #fff;
+    --header-secondary: var(--yt-text);
+    --text-subtle: var(--yt-text-muted);
+    --text-muted: var(--yt-text-muted);
+    --text-link: var(--yt-blue);
+    --channels-default: var(--yt-text-muted);
+
+    /* icons / interactive */
+    --interactive-normal: var(--yt-text-muted);
+    --interactive-hover: var(--yt-text);
+    --interactive-active: #fff;
+    --interactive-text-default: var(--yt-text-muted);
+    --interactive-text-hover: var(--yt-text);
+    --interactive-text-active: #fff;
+    --interactive-icon-default: var(--yt-text-muted);
+    --interactive-icon-hover: var(--yt-text);
+    --interactive-icon-active: #fff;
+    --icon-default: var(--yt-text);
+    --icon-strong: #fff;
+    --icon-subtle: var(--yt-text-muted);
+    --icon-muted: var(--yt-text-muted);
+
+    /* borders */
+    --border-subtle: var(--yt-border);
+    --border-normal: var(--yt-border);
+    --border-strong: var(--yt-border-hover);
+
+    /* accents */
+    --badge-notification-background: var(--yt-red);
+    --status-danger: var(--yt-red);
+
+    /* scrollbars: red thumb, no track */
+    --scrollbar-auto-thumb: var(--yt-red);
+    --scrollbar-auto-track: transparent;
+    --scrollbar-auto-scrollbar-color-thumb: var(--yt-red);
+    --scrollbar-auto-scrollbar-color-track: transparent;
+    --scrollbar-thin-thumb: var(--yt-red);
+    --scrollbar-thin-track: transparent;
+}
+
+[class^="auto_"]::-webkit-scrollbar-thumb,
+[class*=" auto_"]::-webkit-scrollbar-thumb,
+[class^="thin_"]::-webkit-scrollbar-thumb,
+[class*=" thin_"]::-webkit-scrollbar-thumb {
+    background-color: var(--yt-red);
+    border: none;
+    border-radius: 2px;
+}
+
+/* =========================================================
+   2. Layout: one flat background, no dividers
+   ========================================================= */
+.visual-refresh [class^="sidebar_"]::after,
+.visual-refresh [class*=" sidebar_"]::after,
+[class*="chatGradient_"],
+[class*="chatTypingGradient"] {
+    background: none !important;
+}
+
+/* =========================================================
+   3. Channel list
+   ========================================================= */
+[class*="modeSelected_"] :is([class^="link_"], [class*=" link_"]) {
+    background-color: var(--yt-red) !important;
+    border-radius: 12px;
+}
+
+[class*="modeSelected_"] :is([class^="name_"], [class*=" name_"], [class^="icon_"], [class*=" icon_"]) {
+    color: #fff !important;
+}
+
+[class*="modeUnreadImportant_"] :is([class^="name_"], [class*=" name_"], [class^="icon_"], [class*=" icon_"]) {
+    color: var(--yt-blue);
+    font-weight: 600;
+}
+
+/* Server pill + unread dots */
+.item__o8_Xq {
+    background-color: var(--yt-red);
+    border-radius: 60px;
+}
+
+/* Selected DM */
+[class*="interactiveSelected_"] {
+    background-color: var(--yt-red) !important;
+    color: #fff !important;
+}
+
+/* =========================================================
+   4. Chat
+   ========================================================= */
+
+/* Message box: YouTube style pill */
+.visual-refresh [class^="channelTextArea_"],
+.visual-refresh [class*=" channelTextArea_"] {
+    background-color: var(--yt-bg);
+    border: 1px solid var(--yt-border);
+    border-radius: 50px;
+}
+
+[class*="channelTextArea_"] [class*="scrollableContainer_"] {
+    background-color: transparent;
+}
+
+/* Attach button = YouTube play button */
+[class*="attachButtonInner_"] {
+    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_play_button_icon_%282013%E2%80%932017%29.svg/1200px-YouTube_play_button_icon_%282013%E2%80%932017%29.svg.png") center / contain no-repeat;
+}
+
+[class*="attachButtonInner_"] svg {
+    opacity: 0;
+}
+
+/* Mentioned / replying messages */
+.visual-refresh [class*="message_"][class*="mentioned_"],
+.visual-refresh [class*="message_"][class*="replying_"] {
+    border: 1px solid var(--yt-border);
+}
+
+.visual-refresh [class*="message_"][class*="mentioned_"]::before,
+.visual-refresh [class*="message_"][class*="replying_"]::before {
+    background-color: transparent;
+}
+
+.mention {
+    border-radius: 30px;
+    padding: 1px 6px;
+}
+
+/* New messages bars */
+[class*="newMessagesBar_"],
+[class*="jumpToPresentBar_"] {
+    background-color: var(--yt-red) !important;
+    box-shadow: none;
+}
+
+[class*="jumpToPresentBar_"] {
+    border-radius: 30px 30px 0 0;
+}
+
+[class*="unreadPill_"] {
+    background-color: var(--yt-red);
+    color: #fff;
+    border-radius: 0 30px 30px 0;
+}
+
+[class*="unreadPillCapStroke_"] {
+    color: var(--yt-red);
+    fill: var(--yt-red);
+}
+
+/* Reactions */
+.visual-refresh :is([class^="reaction_"], [class*=" reaction_"]) {
+    background: var(--yt-hover);
+    border: none;
+    border-radius: 30px;
+}
+
+.visual-refresh :is([class^="reaction_"], [class*=" reaction_"]):hover {
+    background: var(--yt-active);
+}
+
+.visual-refresh [class*="reactionMe_"] {
+    background-color: rgba(255, 0, 0, .5);
+}
+
+[class*="reactionMe_"] [class*="reactionCount_"] {
+    color: #fff;
+}
+
+/* Embeds */
+.visual-refresh [class*="embedFull_"] {
+    border: 2px solid var(--yt-border) !important;
+    background: var(--yt-bg);
+}
+
+/* Code */
+.hljs {
+    color: var(--yt-text);
+    background: var(--yt-hover);
+    border-radius: 8px;
+}
+
+.theme-dark .hljs-code,
+.theme-dark .hljs-comment,
+.theme-dark .hljs-formula {
+    color: var(--yt-text-muted);
+}
+
+.visual-refresh [class*="markup_"] code {
+    background: var(--yt-hover);
+    border: 1px solid var(--yt-border);
+}
+
+/* Bot tag */
+[class*="botTagRegular_"] {
+    background: var(--yt-hover) !important;
+    color: var(--yt-text) !important;
+    font-weight: 600;
+}
+
+/* Empty channel icon = YouTube logo */
+[class*="emptyChannelIcon_"] {
+    background-color: var(--yt-red);
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_play_button_icon_%282013%E2%80%932017%29.svg/1200px-YouTube_play_button_icon_%282013%E2%80%932017%29.svg.png");
+    background-size: cover;
+    border: 2px solid rgba(255, 255, 255, .7);
+}
+
+/* Typing dots */
+[class*="typingIndicator_"] {
+    background-color: var(--yt-red);
+}
+
+/* =========================================================
+   5. Popouts, menus, tooltips
+   ========================================================= */
+
+/* Right-click menus */
+:is([class^="menu_"], [class*=" menu_"]) {
+    background: var(--yt-bg);
+    border: 2px solid var(--yt-border);
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+[class*="colorDefault_"][class*="focused_"] {
+    background-color: var(--yt-hover);
+    color: #fff;
+}
+
+/* Tooltips */
+.theme-dark [class*="tooltipPrimary_"],
+.theme-dark [class*="tooltipBrand_"] {
+    background-color: var(--yt-tooltip);
+    color: #fff;
+    box-shadow: none;
+}
+
+.theme-dark [class*="tooltipPointer_"] {
+    border-top-color: transparent;
+}
+
+/* Autocomplete (@mentions, emoji, commands): white like YouTube search */
+.theme-dark [class^="autocomplete_"],
+.theme-dark [class*=" autocomplete_"] {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.theme-dark :is([class^="autocomplete_"], [class*=" autocomplete_"]) * {
+    color: #0F0F0F !important;
+}
+
+[class*="autocomplete_"] [class*="clickable_"][aria-selected="true"] > [class*="base_"],
+[class*="autocomplete_"] [class*="clickable_"]:hover > [class*="base_"] {
+    background-color: #eee;
+}
+
+/* Profile popouts: flat background even with Nitro colors */
+[style*="--profile-gradient-primary-color"] {
+    --profile-gradient-primary-color: var(--yt-bg) !important;
+    --profile-gradient-secondary-color: var(--yt-bg) !important;
+    --profile-gradient-overlay-color: transparent !important;
+    --profile-body-background-color: var(--yt-bg) !important;
+}
+
+#app-mount [class*="biteSize_"],
+.visual-refresh [class*="fullSize_"] {
+    background: var(--yt-bg) !important;
+    border-radius: 8px;
+}
+
+[class*="userProfileOuter_"] {
+    box-shadow: none;
+    border-radius: 8px;
+}
+
+/* Emoji / GIF / sticker picker */
+[class*="emojiPicker_"],
+#emoji-picker-tab-panel[role="dialog"] {
+    background-color: var(--yt-bg);
+    border: 1px solid var(--yt-border-hover);
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+/* =========================================================
+   6. Settings
+   ========================================================= */
+[class*="navButtonActive_"] {
+    background-color: var(--yt-red) !important;
+    color: #fff !important;
+}
+
+.visual-refresh [class*="navButton_"] {
+    border-radius: 50px;
+}
+
+/* =========================================================
+   7. BetterDiscord settings (only used on BetterDiscord)
+   ========================================================= */
+.bd-button {
+    background-color: var(--yt-hover);
+    color: var(--yt-text);
+    border-radius: 5px;
+}
+
+.bd-button:hover,
+.bd-addon-views .bd-view-button.selected {
+    background-color: var(--yt-active);
+}
+
+.bd-addon-list .bd-addon-card,
+.bd-search-wrapper,
+.bd-select,
+.bd-number-input {
+    background: transparent;
+    border: 1px solid var(--yt-border);
+    color: var(--yt-text);
+}
+
+.bd-addon-list .bd-addon-header {
+    background: none;
+}
+
+.bd-meta a {
+    color: var(--yt-blue);
+}
+
+.bd-toast {
+    background-color: var(--yt-red);
+    border-radius: 15px;
+    box-shadow: none;
+}
